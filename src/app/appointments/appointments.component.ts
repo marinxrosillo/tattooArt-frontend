@@ -52,7 +52,7 @@ export class AppointmentsComponent {
     this.editingAppointment = null;
   }
 
-  deleteTattooist(appointmentId: number): void {
+  deleteAppointment(appointmentId: number): void {
     this.appointmentService.deleteAppointment(appointmentId)
       .subscribe(() => {
         // Elimina el usuario de la lista

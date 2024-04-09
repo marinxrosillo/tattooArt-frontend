@@ -1,1 +1,13 @@
-<p>tattooists works!</p>
+<div>
+    <h2>Tattooist</h2>
+
+    <button (click)="addTattooist()">Add Tattooist</button>
+
+    <ul>
+        <li *ngFor="let tattooist of tattooists">
+            {{ tattooist.name }} 
+            <button (click)="editTattooist(tattooist)">Edit</button>
+            <button (click)="deleteTattooist(tattooist)">Delete</button>
+        </li>
+    </ul>
+</div>
