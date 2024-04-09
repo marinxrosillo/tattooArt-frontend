@@ -1,0 +1,40 @@
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 auto;
+    /* Centra horizontalmente los campos de entrada */
+    display: block;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 20px auto 0;
+    /* Centra horizontalmente el botón y agrega un margen superior */
+    display: block;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
