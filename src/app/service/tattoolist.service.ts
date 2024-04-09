@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TattoolistService {
-  private apiUrl = 'https://ejemplo.com/api/users'; // Reemplaza esto con la URL de tu API de usuarios
+  private apiUrl = 'http://127.0.0.1:8000/api/tattoo-list'; // Reemplaza esto con la URL de tu API de usuarios
 
   constructor(private http: HttpClient) { }
 
