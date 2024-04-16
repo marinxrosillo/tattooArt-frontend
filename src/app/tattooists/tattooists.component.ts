@@ -9,6 +9,7 @@ import { TattooistService } from '../service/tattooist.service';
   styleUrls: ['./tattooists.component.css']
 })
 export class TattooistsComponent {
+  tattooist: any = null;
   tattooists: any[] = [];
   newTattooist: any = {};
   editingTattooist: any = null;
@@ -24,23 +25,27 @@ export class TattooistsComponent {
       .subscribe(tattooists => this.tattooists = tattooists);
   }
 
-  addTattooist(): void {
-    this.tattooistService.addTattooist(this.newTattooist)
+  getById(id: number): void {
+    this.tattooistService.getById(id)
+      .subscribe(tattooist => this.tattooist = tattooist);
+  }
+
+  createTattooist(): void {
+    this.tattooistService.createTattooist(this.newTattooist)
       .subscribe(tattooist => {
         this.tattooists.push(tattooist);
         this.newTattooist = {};
       });
   }
 
-  editTattooist(tattooist: any): void {
-    this.editingTattooist = { ...tattooist }; // Realiza una copia del usuario para edición
+  updateTattooist(tattooist: any): void {
+    this.editingTattooist = { ...tattooist };
   }
 
   saveTattooist(): void {
     if (this.editingTattooist) {
-      this.tattooistService.editTattooist(this.editingTattooist)
+      this.tattooistService.updateTattooist(this.editingTattooist)
         .subscribe(() => {
-          // Actualiza el usuario editado en la lista
           const index = this.tattooists.findIndex(tattooist => tattooist.id === this.editingTattooist.id);
           if (index !== -1) {
             this.tattooists[index] = { ...this.editingTattooist };
@@ -57,7 +62,6 @@ export class TattooistsComponent {
   deleteTattooist(tattooistId: number): void {
     this.tattooistService.deleteTattooist(tattooistId)
       .subscribe(() => {
-        // Elimina el usuario de la lista
         this.tattooists = this.tattooists.filter(tattooist => tattooist.id !== tattooistId);
       });
   }

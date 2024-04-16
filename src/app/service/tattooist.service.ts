@@ -1,30 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Tattooist } from 'src/models/Tattooist';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TattooistService {
-  private apiUrl = 'http://127.0.0.1:8000/api/tattooists'; // Reemplaza esto con la URL de tu API de usuarios
+  private url = 'http://localhost:8082/tattooArt/api/tattooists';
 
   constructor(private http: HttpClient) { }
 
-  getTattooists(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  // Obtener todos los tatuadores
+  getTattooists(): Observable<Tattooist[]> {
+    return this.http.get<Tattooist[]>(this.url);
   }
 
-  addTattooist(tattooist: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, tattooist);
+  // Obtener un tatuador por su ID
+  getById(id: number): Observable<Tattooist> {
+    return this.http.get<Tattooist>(`${this.url}/${id}`);
   }
 
-  editTattooist(tattooist: any): Observable<any> {
-    const url = `${this.apiUrl}/${tattooist.id}`;
-    return this.http.put<any>(url, tattooist);
+  // Crear un nuevo tatuador
+  createTattooist(tattooist: Tattooist): Observable<Tattooist> {
+    return this.http.post<Tattooist>(this.url, tattooist);
   }
 
-  deleteTattooist(tattooistId: number): Observable<any> {
-    const url = `${this.apiUrl}/${tattooistId}`;
-    return this.http.delete<any>(url);
+  // Actualizar un tatuador
+  updateTattooist(tattooist: Tattooist): Observable<Tattooist> {
+    return this.http.put<Tattooist>(`${this.url}/${tattooist.id}`, tattooist);
+  }
+
+  // Eliminar un tatuador
+  deleteTattooist(id: number): Observable<Tattooist> {
+    return this.http.delete<Tattooist>(`${this.url}/${id}`);
   }
 }

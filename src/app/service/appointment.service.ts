@@ -1,30 +1,41 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Appointment } from "src/models/Appointment";
+import { LoginService } from "./login.service";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AppointmentService {
-  private apiUrl = 'http://127.0.0.1:8000/api/appointments'; // Reemplaza esto con la URL de tu API de usuarios
+@Injectable()
+export class AppointmentsService {
 
-  constructor(private http: HttpClient) { }
+    private url: string = "http://localhost:8082/tattoArt/api/appointments";
 
-  getAppointments(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
-  }
+    constructor(
+        private http: HttpClient,
+        private loginService: LoginService
+    ) {}
 
-  addAppointment(appointment: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, appointment);
-  }
+    // Obtener todas las citas
+    getAppointments(): Observable<Appointment[]> {
+        return this.http.get<Appointment[]>(this.url);
+    }
 
-  editAppointment(appointment: any): Observable<any> {
-    const url = `${this.apiUrl}/${appointment.id}`;
-    return this.http.put<any>(url, appointment);
-  }
+    // Obtener una cita por su ID
+    getById(id: number): Observable<Appointment> {
+        return this.http.get<Appointment>(`${this.url}/${id}`);
+    }
 
-  deleteAppointment(appointmentId: number): Observable<any> {
-    const url = `${this.apiUrl}/${appointmentId}`;
-    return this.http.delete<any>(url);
-  }
+    // Crear una nueva cita
+    createAppointment(appointment: Appointment): Observable<Appointment> {
+        return this.http.post<Appointment>(this.url, appointment);
+    }
+
+    // Actualizar una cita existente
+    updateAppointment(appointment: Appointment): Observable<Appointment> {
+        return this.http.put<Appointment>(`${this.url}/${appointment.id}`, appointment);
+    }
+
+    // Eliminar una cita
+    deleteAppointment(id: number): Observable<Appointment> {
+        return this.http.delete<Appointment>(`${this.url}/${id}`);
+    }
 }

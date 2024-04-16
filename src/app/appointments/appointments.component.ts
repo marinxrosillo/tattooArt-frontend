@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppointmentService } from '../service/appointment.service';
+import { AppointmentsService } from '../service/appointment.service';
 
 @Component({
   selector: 'app-appointments',
@@ -7,11 +7,12 @@ import { AppointmentService } from '../service/appointment.service';
   styleUrls: ['./appointments.component.css']
 })
 export class AppointmentsComponent {
+  appointment: any = null;
   appointments: any[] = [];
   newAppointment: any = {};
   editingAppointment: any = null;
 
-  constructor(private appointmentService: AppointmentService) { }
+  constructor(private appointmentService: AppointmentsService) { }
 
   ngOnInit(): void {
     this.getAppointments();
@@ -22,23 +23,27 @@ export class AppointmentsComponent {
       .subscribe(appointments => this.appointments = appointments);
   }
 
-  addAppointment(): void {
-    this.appointmentService.addAppointment(this.newAppointment)
+  getById(id: number): void {
+    this.appointmentService.getById(id)
+      .subscribe(appointment => this.appointment = appointment);
+  }
+
+  createAppointment(): void {
+    this.appointmentService.createAppointment(this.newAppointment)
       .subscribe(appointment => {
         this.appointments.push(appointment);
         this.newAppointment = {};
       });
   }
 
-  editAppointment(appointment: any): void {
-    this.editingAppointment = { ...appointment }; // Realiza una copia del usuario para edición
+  updateAppointment(appointment: any): void {
+    this.editingAppointment = { ...appointment }; 
   }
 
   saveAppointment(): void {
     if (this.editingAppointment) {
-      this.appointmentService.editAppointment(this.editingAppointment)
+      this.appointmentService.updateAppointment(this.editingAppointment)
         .subscribe(() => {
-          // Actualiza el usuario editado en la lista
           const index = this.appointments.findIndex(appointment => appointment.id === this.editingAppointment.id);
           if (index !== -1) {
             this.appointments[index] = { ...this.editingAppointment };
@@ -55,7 +60,6 @@ export class AppointmentsComponent {
   deleteAppointment(appointmentId: number): void {
     this.appointmentService.deleteAppointment(appointmentId)
       .subscribe(() => {
-        // Elimina el usuario de la lista
         this.appointments = this.appointments.filter(appointment => appointment.id !== appointmentId);
       });
   }

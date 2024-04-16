@@ -7,6 +7,7 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  user: any = null;
   users: any[] = [];
   newUser: any = {};
   editingUser: any = null;
@@ -22,23 +23,27 @@ export class UsersComponent implements OnInit {
       .subscribe(users => this.users = users);
   }
 
-  addUser(): void {
-    this.userService.addUser(this.newUser)
+  getById(id: number): void {
+    this.userService.getById(id)
+      .subscribe(user => this.user = user);
+  }
+
+  createUser(): void {
+    this.userService.createUser(this.newUser)
       .subscribe(user => {
         this.users.push(user);
         this.newUser = {};
       });
   }
 
-  editUser(user: any): void {
-    this.editingUser = { ...user }; // Realiza una copia del usuario para edición
+  updateUser(user: any): void {
+    this.editingUser = { ...user };
   }
 
   saveUser(): void {
     if (this.editingUser) {
-      this.userService.editUser(this.editingUser)
+      this.userService.updateUser(this.editingUser)
         .subscribe(() => {
-          // Actualiza el usuario editado en la lista
           const index = this.users.findIndex(user => user.id === this.editingUser.id);
           if (index !== -1) {
             this.users[index] = { ...this.editingUser };
@@ -55,7 +60,6 @@ export class UsersComponent implements OnInit {
   deleteUser(userId: number): void {
     this.userService.deleteUser(userId)
       .subscribe(() => {
-        // Elimina el usuario de la lista
         this.users = this.users.filter(user => user.id !== userId);
       });
   }

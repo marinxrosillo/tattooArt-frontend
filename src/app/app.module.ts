@@ -13,12 +13,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { TattooistsComponent } from './tattooists/tattooists.component';
 import { TattoolistsComponent } from './tattoolists/tattoolists.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    FooterComponent,
     LoginComponent,
     AdminComponent,
     UsersComponent,

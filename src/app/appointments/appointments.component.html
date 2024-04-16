@@ -1,12 +1,12 @@
 <div>
     <h2>Appointment</h2>
 
-    <button (click)="addAppointment()">Add Appointment</button>
+    <button (click)="createAppointment()">Add Appointment</button>
 
     <ul>
         <li *ngFor="let appointment of appointments">
-            {{ appointment.name }} 
-            <button (click)="editAppointment(appointment)">Edit</button>
+            {{ appointment.name }}
+            <button (click)="updateAppointment(appointment)">Edit</button>
             <button (click)="deleteAppointment(appointment)">Delete</button>
         </li>
     </ul>

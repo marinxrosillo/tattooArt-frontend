@@ -7,6 +7,7 @@ import { TattoolistService } from '../service/tattoolist.service';
   styleUrls: ['./tattoolists.component.css']
 })
 export class TattoolistsComponent {
+  tattoolist: any = null;
   tattoolists: any[] = [];
   newTattoolist: any = {};
   editingTattoolist: any = null;
@@ -18,27 +19,31 @@ export class TattoolistsComponent {
   }
 
   getTattoolists(): void {
-    this.tattoolistService.getTattoolists()
+    this.tattoolistService.getTattooLists()
       .subscribe(tattoolists => this.tattoolists = tattoolists);
   }
 
-  addTattoolist(): void {
-    this.tattoolistService.addTattoolist(this.newTattoolist)
+  getById(id: number): void {
+    this.tattoolistService.getById(id)
+      .subscribe(tattoolist => this.tattoolist = tattoolist);
+  }
+
+  createTattoolist(): void {
+    this.tattoolistService.createTattooList(this.newTattoolist)
       .subscribe(tattoolist => {
         this.tattoolists.push(tattoolist);
         this.newTattoolist = {};
       });
   }
 
-  editTattoolist(tattoolist: any): void {
-    this.editingTattoolist = { ...tattoolist }; // Realiza una copia del usuario para edición
+  updateTattoolist(tattoolist: any): void {
+    this.editingTattoolist = { ...tattoolist };
   }
 
   saveTattoolist(): void {
     if (this.editingTattoolist) {
-      this.tattoolistService.editTattoolist(this.editingTattoolist)
+      this.tattoolistService.updateTattooList(this.editingTattoolist)
         .subscribe(() => {
-          // Actualiza el usuario editado en la lista
           const index = this.tattoolists.findIndex(tattoolist => tattoolist.id === this.editingTattoolist.id);
           if (index !== -1) {
             this.tattoolists[index] = { ...this.editingTattoolist };
@@ -53,9 +58,8 @@ export class TattoolistsComponent {
   }
 
   deleteTattoolist(tattoolistId: number): void {
-    this.tattoolistService.deleteTattoolist(tattoolistId)
+    this.tattoolistService.deleteTattooList(tattoolistId)
       .subscribe(() => {
-        // Elimina el usuario de la lista
         this.tattoolists = this.tattoolists.filter(tattoolist => tattoolist.id !== tattoolistId);
       });
   }
