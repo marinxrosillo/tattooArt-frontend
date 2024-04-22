@@ -7,7 +7,7 @@ import { LoginService } from "./login.service";
 @Injectable()
 export class AppointmentsService {
 
-    private url: string = "http://localhost:8082/tattoArt/api/appointments";
+    private url: string = "http://localhost:8082/tattooArt/api/appointments";
 
     constructor(
         private http: HttpClient,

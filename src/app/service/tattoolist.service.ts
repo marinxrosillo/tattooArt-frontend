@@ -7,7 +7,7 @@ import { TattooList } from 'src/models/TattooList';
   providedIn: 'root'
 })
 export class TattoolistService {
-  private url = 'http://localhost:8082/tattoArt/api/tattoolists';
+  private url = 'http://localhost:8082/tattooArt/api/tattoolists';
 
   constructor(private http: HttpClient) { }
 

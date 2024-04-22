@@ -9,12 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './users/users.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TattooistsComponent } from './tattooists/tattooists.component';
 import { TattoolistsComponent } from './tattoolists/tattoolists.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { FooterComponent } from './footer/footer.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +33,7 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

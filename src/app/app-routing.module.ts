@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'admin/users', component: UsersComponent },
   { path: 'admin/appointments', component: AppointmentsComponent },
   { path: 'admin/tattooists', component: TattooistsComponent },
-  { path: 'admin/tattoolists', component: TattoolistsComponent }
+  { path: 'admin/tattoolists', component: TattoolistsComponent },
+  { path: 'tattooists', component: TattooistsComponent },
 ];
 
 @NgModule({
