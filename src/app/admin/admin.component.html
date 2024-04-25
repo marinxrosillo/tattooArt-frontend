@@ -1,13 +1,127 @@
-<div>
-    <h2>Panel de Control del Administrador</h2>
-    <h3>Users</h3>
-    <a routerLink="/admin/users">Go</a>
-    <h3>Appointments</h3>
-    <a routerLink="/admin/appointments">Go</a>
-    <h3>Tattooists</h3>
-    <a routerLink="/admin/tattooists">Go</a>
-    <h3>Tattoo List</h3>
-    <a routerLink="/admin/tattoolists">Go</a>
-</div>
+<div class="panel-container">
+    <!-- Appointments -->
+    <h2 class="panel-title">Citas</h2>
+    <table class="panel-table" border="1px">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Estado</th>
+                <th>Usuario</th>
+                <th>Tatuaje</th>
+                <th>Tatuador</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of appointments">
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.status }}</td>
+                <td>{{ appointment.user }}</td>
+                <td>{{ appointment.tattoolist }}</td>
+                <td>{{ appointment.tattooist }}</td>
+                <td>
+                    <button class="panel-button" (click)="updateAppointment(appointment)">Editar</button>
+                    <button class="panel-button" (click)="deleteAppointment(appointment.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button class="panel-button" (click)="createAppointment()">Crear nueva cita</button>
 
-<router-outlet></router-outlet>
+    <!-- Tattooists -->
+    <h2 class="panel-title">Tatuadores</h2>
+    <table class="panel-table" border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Disponibilidad</th>
+                <th>Citas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tattooist of tattooists">
+                <td>{{ tattooist.name }}</td>
+                <td>{{ tattooist.speciality }}</td>
+                <td>{{ tattooist.availability }}</td>
+                <td>{{ tattooist.appointments }}</td>
+                <td>
+                    <button class="panel-button" (click)="updateTattooist(tattooist)">Editar</button>
+                    <button class="panel-button" (click)="deleteTattooist(tattooist.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button class="panel-button" (click)="createTattooist()">Crear nuevo tatuador</button>
+
+    <!-- Tattoolists -->
+    <h2 class="panel-title">Tatuajes</h2>
+    <table class="panel-table" border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Color</th>
+                <th>Tamaño</th>
+                <th>Precio</th>
+                <th>Archivo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tattoolist of tattoolists">
+                <td>{{ tattoolist.name }}</td>
+                <td>{{ tattoolist.description }}</td>
+                <td>{{ tattoolist.color }}</td>
+                <td>{{ tattoolist.size }}</td>
+                <td>{{ tattoolist.price }}</td>
+                <td>{{ tattoolist.file }}</td>
+                <td>
+                    <button class="panel-button" (click)="updateTattoolist(tattoolist)">Editar</button>
+                    <button class="panel-button" (click)="deleteTattoolist(tattoolist.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button class="panel-button" (click)="createTattoolist()">Crear nueva lista de tatuajes</button>
+
+    <!-- Users -->
+    <h2 class="panel-title">Usuarios</h2>
+    <table class="panel-table" border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nombre de Usuario</th>
+                <th>Email</th>
+                <th>Calle</th>
+                <th>Número</th>
+                <th>Código Postal</th>
+                <th>Citas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.street }}</td>
+                <td>{{ user.number }}</td>
+                <td>{{ user.zipCode }}</td>
+                <td>{{ user.appointments }}</td>
+                <td>
+                    <button class="panel-button" (click)="updateUser(user)">Editar</button>
+                    <button class="panel-button" (click)="deleteUser(user.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button class="panel-button" (click)="createUser()">Crear nuevo usuario</button>
+</div>

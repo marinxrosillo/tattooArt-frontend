@@ -1,13 +1,14 @@
-<div>
-    <h2>Tattooist</h2>
+<div class="container">
+    <h2>Tattooists</h2>
 
-    <button (click)="createTattooist()">Add Tattooist</button>
-
-    <ul>
-        <li *ngFor="let tattooist of tattooists">
-            {{ tattooist.name }}
+    <div class="tattooists-grid">
+        <div *ngFor="let tattooist of tattooists" class="tattooist">
+            <h3>{{ tattooist.name }}</h3>
+            <!-- Aquí puedes agregar más detalles del tatuador si es necesario -->
             <button (click)="updateTattooist(tattooist)">Edit</button>
             <button (click)="deleteTattooist(tattooist)">Delete</button>
-        </li>
-    </ul>
+        </div>
+    </div>
+
+    <button (click)="createTattooist()">Add Tattooist</button>
 </div>
