@@ -2,7 +2,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1f1f1f;
+    background-color: #212529;
     padding: 20px 40px; /* Ajusta el espaciado según sea necesario */
     color: #fff;
 }
@@ -49,6 +49,19 @@ a.router-link-active {
 }
 
 .login-btn a:hover {
+    background-color: #fff;
+    color: #1f1f1f;
+}
+
+.logout-btn a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px; /* Ajusta el espaciado del botón según sea necesario */
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+.logout-btn a:hover {
     background-color: #fff;
     color: #1f1f1f;
 }

@@ -7,16 +7,18 @@ import { UsersComponent } from './users/users.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { TattooistsComponent } from './tattooists/tattooists.component';
 import { TattoolistsComponent } from './tattoolists/tattoolists.component';
+import { AuthGuard } from './helpers/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/users', component: UsersComponent },
-  { path: 'admin/appointments', component: AppointmentsComponent },
-  { path: 'admin/tattooists', component: TattooistsComponent },
-  { path: 'admin/tattoolists', component: TattoolistsComponent },
-  { path: 'tattooists', component: TattooistsComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: LoginComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard] },
+  { path: 'admin/appointments', component: AppointmentsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/tattooists', component: TattooistsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/tattoolists', component: TattoolistsComponent, canActivate: [AuthGuard] },
+  { path: 'tattooists', component: TattooistsComponent, canActivate: [AuthGuard] },
+  { path: 'tattoolists', component: TattoolistsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

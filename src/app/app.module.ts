@@ -14,6 +14,13 @@ import { TattooistsComponent } from './tattooists/tattooists.component';
 import { TattoolistsComponent } from './tattoolists/tattoolists.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserService } from './service/user.service';
+import { TattooistService } from './service/tattooist.service';
+import { TattoolistService } from './service/tattoolist.service';
+import { AppointmentsService } from './service/appointment.service';
+import { LoginService } from './service/login.service';
+import { AuthGuard } from './helpers/auth.guard';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +40,17 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [   ],
+  providers: [ 
+    UserService,
+    TattooistService,
+    TattoolistService,
+    AppointmentsService,
+    LoginService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    }
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
