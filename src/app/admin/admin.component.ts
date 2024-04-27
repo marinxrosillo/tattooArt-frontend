@@ -58,31 +58,6 @@ export class AdminComponent {
       .subscribe(appointment => this.appointment = appointment);
   }
 
-  createAppointment(): void {
-    this.appointmentService.createAppointment(this.newAppointment)
-      .subscribe(appointment => {
-        this.appointments.push(appointment);
-        this.newAppointment = {};
-      });
-  }
-
-  updateAppointment(appointment: any): void {
-    this.editingAppointment = { ...appointment }; 
-  }
-
-  saveAppointment(): void {
-    if (this.editingAppointment) {
-      this.appointmentService.updateAppointment(this.editingAppointment)
-        .subscribe(() => {
-          const index = this.appointments.findIndex(appointment => appointment.id === this.editingAppointment.id);
-          if (index !== -1) {
-            this.appointments[index] = { ...this.editingAppointment };
-          }
-          this.editingAppointment = null;
-        });
-    }
-  }
-
   deleteAppointment(appointmentId: number): void {
     this.appointmentService.deleteAppointment(appointmentId)
       .subscribe(() => {
@@ -99,31 +74,6 @@ export class AdminComponent {
   getTattooistById(id: number): void {
     this.tattooistService.getById(id)
       .subscribe(tattooist => this.tattooist = tattooist);
-  }
-
-  createTattooist(): void {
-    this.tattooistService.createTattooist(this.newTattooist)
-      .subscribe(tattooist => {
-        this.tattooists.push(tattooist);
-        this.newTattooist = {};
-      });
-  }
-
-  updateTattooist(tattooist: any): void {
-    this.editingTattooist = { ...tattooist };
-  }
-
-  saveTattooist(): void {
-    if (this.editingTattooist) {
-      this.tattooistService.updateTattooist(this.editingTattooist)
-        .subscribe(() => {
-          const index = this.tattooists.findIndex(tattooist => tattooist.id === this.editingTattooist.id);
-          if (index !== -1) {
-            this.tattooists[index] = { ...this.editingTattooist };
-          }
-          this.editingTattooist = null;
-        });
-    }
   }
 
   deleteTattooist(tattooistId: number): void {
@@ -144,31 +94,6 @@ export class AdminComponent {
       .subscribe(tattoolist => this.tattoolist = tattoolist);
   }
 
-  createTattoolist(): void {
-    this.tattoolistService.createTattooList(this.newTattoolist)
-      .subscribe(tattoolist => {
-        this.tattoolists.push(tattoolist);
-        this.newTattoolist = {};
-      });
-  }
-
-  updateTattoolist(tattoolist: any): void {
-    this.editingTattoolist = { ...tattoolist };
-  }
-
-  saveTattoolist(): void {
-    if (this.editingTattoolist) {
-      this.tattoolistService.updateTattooList(this.editingTattoolist)
-        .subscribe(() => {
-          const index = this.tattoolists.findIndex(tattoolist => tattoolist.id === this.editingTattoolist.id);
-          if (index !== -1) {
-            this.tattoolists[index] = { ...this.editingTattoolist };
-          }
-          this.editingTattoolist = null;
-        });
-    }
-  }
-
   deleteTattoolist(tattoolistId: number): void {
     this.tattoolistService.deleteTattooList(tattoolistId)
       .subscribe(() => {
@@ -187,35 +112,33 @@ export class AdminComponent {
       .subscribe(user => this.user = user);
   }
 
-  createUser(): void {
-    this.userService.createUser(this.newUser)
-      .subscribe(user => {
-        this.users.push(user);
-        this.newUser = {};
-      });
-  }
-
-  updateUser(user: any): void {
-    this.editingUser = { ...user };
-  }
-
-  saveUser(): void {
-    if (this.editingUser) {
-      this.userService.updateUser(this.editingUser)
-        .subscribe(() => {
-          const index = this.users.findIndex(user => user.id === this.editingUser.id);
-          if (index !== -1) {
-            this.users[index] = { ...this.editingUser };
-          }
-          this.editingUser = null;
-        });
-    }
-  }
-
   deleteUser(userId: number): void {
     this.userService.deleteUser(userId)
       .subscribe(() => {
         this.users = this.users.filter(user => user.id !== userId);
       });
   }
+
+  //Delete
+  confirmDelete(entityType: string, entityId: number) {
+    if (confirm(`¿Estás seguro de que deseas eliminar este ${entityType}?`)) {
+      switch (entityType) {
+        case 'appointment':
+          this.deleteAppointment(entityId);
+          break;
+        case 'tattooist':
+          this.deleteTattooist(entityId);
+          break;
+        case 'tattoolist':
+          this.deleteTattoolist(entityId);
+          break;
+        case 'user':
+          this.deleteUser(entityId);
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
 }

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card-body">
+      <h5 class="card-title" style="font-weight: bold; text-align: center;">{{ title }}</h5>
+      <br>
+      <form>
+          <div class="form-group">
+              <label for="name">Name: </label>
+              <input type="text" name="name" [(ngModel)]="tattooist.name">
+          </div>
+          <div class="form-group">
+              <label for="speciality">Speciality: </label>
+              <input type="text" name="speciality" [(ngModel)]="tattooist.speciality">
+          </div>
+          <div class="form-group">
+              <label for="availability">Availability: </label>
+              <input type="text" name="availability" [(ngModel)]="tattooist.availability">
+          </div>
+          <div class="form-group">
+              <label for="appointments">Appointments: </label>
+              <input type="text" name="appointments" [(ngModel)]="tattooist.appointments">
+          </div>
+
+          <button class="btn-success" (click)="create()" *ngIf="!tattooist.id; else elseBlock">Add</button>
+
+          <ng-template #elseBlock>
+              <button class="btn-success" (click)="update()">Update</button>
+          </ng-template>
+      </form>
+  </div>
+</div>

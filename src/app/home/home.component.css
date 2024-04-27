@@ -10,8 +10,8 @@ body {
 }
 
 .container {
-  max-width: 800px; /* Reduce el ancho máximo para una apariencia más elegante */
-  margin: 0 auto;
+  max-width: 90%; /* Reduce el ancho máximo para una apariencia más elegante */
+  margin: 20px auto;
   padding: 20px;
   background-color: #fff; /* Cambia el color de fondo del contenedor */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega sombra para un aspecto más elegante */
@@ -67,6 +67,6 @@ a:hover {
 .tattoo img {
   display: block;
   margin: 0 auto; /* Centra las imágenes horizontalmente */
-  max-width: 40%; /* Ajusta el tamaño máximo de las imágenes al contenedor */
+  max-width: 20%; /* Ajusta el tamaño máximo de las imágenes al contenedor */
   height: auto;
 }

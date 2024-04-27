@@ -1,14 +1,17 @@
 <div class="container">
-    <h2>Tattooists</h2>
+  <h2>Tattooists</h2>
 
-    <div class="tattooists-grid">
-        <div *ngFor="let tattooist of tattooists" class="tattooist">
-            <h3>{{ tattooist.name }}</h3>
-            <!-- Aquí puedes agregar más detalles del tatuador si es necesario -->
-            <button (click)="updateTattooist(tattooist)">Edit</button>
-            <button (click)="deleteTattooist(tattooist)">Delete</button>
-        </div>
-    </div>
+  <div class="tattooists-grid">
+      <div *ngFor="let tattooist of tattooists" class="tattooist">
+          <h3>{{ tattooist.name }}</h3>
+          Especialidad: <p>{{ tattooist.speciality }}</p>
 
-    <button (click)="createTattooist()">Add Tattooist</button>
+          <div class="tattoo-images">
+              <div *ngFor="let tattoo of tattooist.tattoos" class="tattoo">
+                  <img [src]="tattoo.image" alt="Tattoo">
+                  <p>{{ tattoo.description }}</p> <!-- Descripción del tatuaje -->
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

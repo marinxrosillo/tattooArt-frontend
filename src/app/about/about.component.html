@@ -1,0 +1,32 @@
+<body>
+  <div class="container">
+      <h1>Sobre Nosotros</h1>
+      <p>En la era digital actual, donde la expresión personal y el arte corporal evolucionan constantemente, se desarrolla TattooArt, una tienda de tatuajes dedicada a brindar una experiencia única y personalizada en el mundo del tatuaje.</p>
+      <p>TattooArt se complace en anunciar el lanzamiento de su plataforma web, con el objetivo de brindar servicios más convenientes y accesibles a nuestros clientes. La plataforma permite a los entusiastas del tatuaje explorar el trabajo de los artistas, encontrar inspiración para sus propios diseños y, lo más importante, reservar citas en línea de forma rápida y sencilla.</p>
+
+      <img src="assets/tienda.jpg" alt="Tattoo Art" style="width: 100%;">
+
+      <h2>Nuestra Misión</h2>
+      <p>En TattooArt, nuestra misión es proporcionar a nuestros clientes una experiencia de tatuaje excepcional y personalizada. Nos esforzamos por ofrecer un entorno seguro y acogedor donde los clientes puedan expresar su creatividad y estilo a través del arte del tatuaje. Nuestro objetivo es superar las expectativas de nuestros clientes y brindarles un servicio excepcional en cada paso del proceso de tatuaje.</p>
+      <p>Nuestros Objetivos:</p>
+
+      <li>Simplificar las reservas: el objetivo principal  del proyecto TattooArt es proporcionar a los clientes una plataforma en línea fácil de usar para concertar citas con tatuadores en las tiendas. Esto incluye el desarrollo de  un sistema eficiente que permita a los usuarios seleccionar fechas y horas disponibles según sus preferencias.</li>
+      <li>Mejorar la experiencia del cliente: Nuestro objetivo es brindar a nuestros clientes una experiencia fluida y placentera al navegar por la plataforma web TattooArt. Esto incluye una interfaz intuitiva, información clara sobre los servicios y artistas disponibles y la capacidad de ver ejemplos de trabajos anteriores.</li>
+
+      <h2>Nuestro Equipo</h2>
+      <p>Conozca a nuestro talentoso equipo de artistas del tatuaje:</p>
+        <ul>
+          <li *ngFor="let tattooist of tattooists">
+            {{ tattooist.name }} - {{ tattooist.speciality }}
+          </li>
+        </ul>
+
+      <h2>Contacto</h2>
+      <p>Si tiene alguna pregunta o consulta, no dude en ponerse en contacto con nosotros:</p>
+        <ul>
+          <li>Correo electrónico: tattooArt_information&#64;gmail.com</li>
+          <li>Teléfono: 955 555 555 - 666 666 666</li>
+          <li>Dirección: 123 Main Street, City, Country</li>
+        </ul>
+  </div>
+</body>

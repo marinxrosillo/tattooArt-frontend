@@ -22,14 +22,14 @@
                 <td>{{ appointment.tattoolist }}</td>
                 <td>{{ appointment.tattooist }}</td>
                 <td>
-                    <button class="panel-button" (click)="updateAppointment(appointment)">Editar</button>
-                    <button class="panel-button" (click)="deleteAppointment(appointment.id)">Eliminar</button>
+                    <button class="panel-button" [routerLink]="'/appointments/edit/' + appointment.id">Editar</button>
+                    <button class="panel-button" (click)="confirmDelete('appointment', appointment.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button class="panel-button" (click)="createAppointment()">Crear nueva cita</button>
+    <button class="panel-button" routerLink="/appointments/create">Crear nueva cita</button>
 
     <!-- Tattooists -->
     <h2 class="panel-title">Tatuadores</h2>
@@ -50,14 +50,14 @@
                 <td>{{ tattooist.availability }}</td>
                 <td>{{ tattooist.appointments }}</td>
                 <td>
-                    <button class="panel-button" (click)="updateTattooist(tattooist)">Editar</button>
-                    <button class="panel-button" (click)="deleteTattooist(tattooist.id)">Eliminar</button>
+                    <button class="panel-button" [routerLink]="'/tattooists/edit/' + tattooist.id">Editar</button>
+                    <button class="panel-button" (click)="confirmDelete('tattooist', tattooist.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button class="panel-button" (click)="createTattooist()">Crear nuevo tatuador</button>
+    <button class="panel-button" routerLink="/tattooists/create">Crear nuevo tatuador</button>
 
     <!-- Tattoolists -->
     <h2 class="panel-title">Tatuajes</h2>
@@ -70,6 +70,7 @@
                 <th>Tamaño</th>
                 <th>Precio</th>
                 <th>Archivo</th>
+                <th>Citas</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -81,15 +82,16 @@
                 <td>{{ tattoolist.size }}</td>
                 <td>{{ tattoolist.price }}</td>
                 <td>{{ tattoolist.file }}</td>
+                <td>{{ tattooist.appointments }}</td>
                 <td>
-                    <button class="panel-button" (click)="updateTattoolist(tattoolist)">Editar</button>
-                    <button class="panel-button" (click)="deleteTattoolist(tattoolist.id)">Eliminar</button>
+                    <button class="panel-button" [routerLink]="'/tattoolists/edit/' + tattoolist.id">Editar</button>
+                    <button class="panel-button" (click)="confirmDelete('tattoolist', tattoolist.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button class="panel-button" (click)="createTattoolist()">Crear nueva lista de tatuajes</button>
+    <button class="panel-button" routerLink="/tattoolists/create">Crear nuevo tatuaje</button>
 
     <!-- Users -->
     <h2 class="panel-title">Usuarios</h2>
@@ -99,9 +101,6 @@
                 <th>Nombre</th>
                 <th>Nombre de Usuario</th>
                 <th>Email</th>
-                <th>Calle</th>
-                <th>Número</th>
-                <th>Código Postal</th>
                 <th>Citas</th>
                 <th>Acciones</th>
             </tr>
@@ -111,17 +110,14 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.street }}</td>
-                <td>{{ user.number }}</td>
-                <td>{{ user.zipCode }}</td>
                 <td>{{ user.appointments }}</td>
                 <td>
-                    <button class="panel-button" (click)="updateUser(user)">Editar</button>
-                    <button class="panel-button" (click)="deleteUser(user.id)">Eliminar</button>
+                    <button class="panel-button" [routerLink]="'/users/edit/' + user.id">Editar</button>
+                    <button class="panel-button" (click)="confirmDelete('user', user.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button class="panel-button" (click)="createUser()">Crear nuevo usuario</button>
+    <button class="panel-button" routerLink="/users/create">Crear nuevo usuario</button>
 </div>

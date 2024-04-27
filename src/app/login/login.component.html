@@ -18,7 +18,7 @@
   </div>
   <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 35rem">
   <form #form="ngForm" (ngSubmit)="login(form)">
-    
+
       <div class="d-flex justify-content-center">
         <img src="/assets/logo2.png" style="height: 10rem" />
       </div>
@@ -50,9 +50,9 @@
       </button>
       <div class="d-flex gap-1 justify-content-center mt-1">
         <div>¿No tienes una cuenta?</div>
-        <a href="#" class="text-decoration-none text-dark fw-semibold">Regístrate</a>
+        <a routerLink="/register" class="text-decoration-none text-dark fw-semibold">Regístrate</a>
       </div>
-    
+
   </form>
 </div>
 </body>

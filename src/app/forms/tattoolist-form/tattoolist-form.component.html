@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="card-body">
+      <h5 class="card-title" style="font-weight: bold; text-align: center;">{{ title }}</h5>
+      <br>
+      <form>
+          <div class="form-group">
+              <label for="name">Name: </label>
+              <input type="text" name="name" [(ngModel)]="tattoolist.name">
+          </div>
+          <div class="form-group">
+              <label for="description">Description: </label>
+              <input type="text" name="description" [(ngModel)]="tattoolist.description">
+          </div>
+          <div class="form-group">
+              <label for="color">Color: </label>
+              <input type="text" name="color" [(ngModel)]="tattoolist.color">
+          </div>
+          <div class="form-group">
+            <label for="size">Size: </label>
+            <input type="text" name="size" [(ngModel)]="tattoolist.size">
+          </div>
+          <div class="form-group">
+            <label for="price">Price: </label>
+            <input type="text" name="price" [(ngModel)]="tattoolist.price">
+          </div>
+          <div class="form-group">
+            <label for="file">File: </label>
+            <input type="text" name="file" [(ngModel)]="tattoolist.file">
+          </div>
+          <div class="form-group">
+              <label for="appointments">Appointments: </label>
+              <input type="text" name="appointments" [(ngModel)]="tattoolist.appointments">
+          </div>
+
+          <button class="btn-success" (click)="create()" *ngIf="!tattoolist.id; else elseBlock">Add</button>
+
+          <ng-template #elseBlock>
+              <button class="btn-success" (click)="update()">Update</button>
+          </ng-template>
+      </form>
+  </div>
+</div>
