@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'; // Importa map desde rxjs/operators
 import { User } from 'src/models/User';
 
 @Injectable({
@@ -34,5 +35,14 @@ export class UserService {
   // Eliminar un usuario
   deleteUser(id: number): Observable<User> {
     return this.http.delete<User>(`${this.url}/${id}`);
+  }
+
+  // Verificar si un usuario es administrador
+  isAdminUser(userId: number): Observable<boolean> {
+    return this.http.get<User>(`${this.url}/${userId}`).pipe(
+      map((user: User) => {
+        return user.isAdmin === true; // Suponiendo que isAdmin es un booleano
+      })
+    );
   }
 }

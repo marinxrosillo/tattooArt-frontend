@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
+
+  isLoggedIn = false;
+  currentUserEmail: string | null = null;
 
   constructor() { }
 
-  login() {
-    // Lógica para iniciar sesión
-    this.isLoggedInSubject.next(true);
+  login(email: string, password: string) {
+    // Lógica de inicio de sesión aquí
+    // Asigna el correo electrónico del usuario actual
+    this.isLoggedIn = true;
+    this.currentUserEmail = email;
   }
 
   logout() {
-    // Lógica para cerrar sesión
-    this.isLoggedInSubject.next(false);
+    // Lógica de cierre de sesión aquí
+    this.isLoggedIn = false;
+    this.currentUserEmail = null;
   }
 
-  isLoggedIn(): Observable<boolean> {
-    return this.isLoggedIn$;
+  isAdmin(): boolean {
+    // Verifica si el usuario actual es admin
+    return this.currentUserEmail === 'admin@admin.com';
   }
 }

@@ -8,9 +8,14 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+
   isLoggedIn: boolean = false;
 
-  constructor(private loginService: LoginService) { }
+  constructor(
+    private loginService: LoginService,
+    public authService: AuthService
+  ) { }
 
   ngOnInit() {
     // Verificar el estado de autenticación al inicializar el componente
@@ -25,6 +30,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
+    this.authService.logout();
     this.isLoggedIn = false; // Actualizar el estado de isLoggedIn después de cerrar sesión
   }
 }

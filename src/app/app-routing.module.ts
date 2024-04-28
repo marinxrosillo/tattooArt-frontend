@@ -12,12 +12,13 @@ import { TattooistFormComponent } from './forms/tattooist-form/tattooist-form.co
 import { TattooListFormComponent } from './forms/tattoolist-form/tattoolist-form.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './forms/register/register.component';
+import { AdminGuard } from './helpers/admin.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]  },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'tattooists', component: TattooistsComponent, canActivate: [AuthGuard] },
   { path: 'tattoolists', component: TattoolistsComponent, canActivate: [AuthGuard] },
