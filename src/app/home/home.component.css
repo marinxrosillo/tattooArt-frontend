@@ -3,20 +3,20 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f7f7f7; /* Cambia el color de fondo según tu preferencia */
-  display: flex; /* Utiliza flexbox para centrar el contenido */
-  justify-content: center; /* Centra horizontalmente el contenido */
-  align-items: center; /* Centra verticalmente el contenido */
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  max-width: 90%; /* Reduce el ancho máximo para una apariencia más elegante */
+  max-width: 90%;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff; /* Cambia el color de fondo del contenedor */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega sombra para un aspecto más elegante */
-  border-radius: 8px; /* Añade bordes redondeados */
-  text-align: center; /* Centra el texto dentro del contenedor */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
 }
 
 /* Estilos del encabezado */
@@ -27,7 +27,7 @@ header {
 header h1 {
   font-size: 36px;
   color: #333;
-  margin-bottom: 10px; /* Reduce el espacio entre el título y el párrafo */
+  margin-bottom: 10px;
 }
 
 header p {
@@ -36,37 +36,29 @@ header p {
   margin-bottom: 20px;
 }
 
-/* Estilos de las secciones */
-section {
-  margin-bottom: 40px;
-}
-
-section h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-section p {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.6; /* Aumenta el espacio entre líneas para una mejor legibilidad */
-}
-
-/* Estilos para enlaces */
-a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+/* Estilos de las columnas */
+.column {
+  width: calc(33.33% - 20px);
+  margin: 0 10px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin-top: 10px;
 }
 
 /* Estilos de las imágenes */
 .tattoo img {
   display: block;
-  margin: 0 auto; /* Centra las imágenes horizontalmente */
-  max-width: 20%; /* Ajusta el tamaño máximo de las imágenes al contenedor */
-  height: auto;
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Estilos del texto debajo de las imágenes */
+.tattoo p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
 }

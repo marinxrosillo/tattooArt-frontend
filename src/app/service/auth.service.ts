@@ -7,6 +7,7 @@ export class AuthService {
 
   isLoggedIn = false;
   currentUserEmail: string | null = null;
+  private isUserRegistered: boolean = false;
 
   constructor() { }
 
@@ -26,5 +27,13 @@ export class AuthService {
   isAdmin(): boolean {
     // Verifica si el usuario actual es admin
     return this.currentUserEmail === 'admin@admin.com';
+  }
+
+  setUserRegisteredStatus(status: boolean): void {
+    this.isUserRegistered = status;
+  }
+
+  getUserRegisteredStatus(): boolean {
+    return this.isUserRegistered;
   }
 }

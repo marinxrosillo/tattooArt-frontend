@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
+import { LoginService } from 'src/app/service/login.service';
 import { UserService } from 'src/app/service/user.service';
+import { Credentials } from 'src/models/Credentials';
 import { User } from 'src/models/User';
 
 @Component({
@@ -15,10 +18,19 @@ export class RegisterComponent {
 
   registrationError: boolean = false;
 
+  loginError = false;
+
+  creds: Credentials = {
+    email: '',
+    password: ''
+  };
+
   constructor(
     private userService: UserService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private loginService: LoginService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -38,12 +50,19 @@ export class RegisterComponent {
     );
   }
 
-  register(form: NgForm): void {
-    if (form.valid) {
-      this.registrationError = true;
-      this.userService.createUser(this.user).subscribe(
-        response => this.router.navigate(['home'])
-      );
-    }
+  register(): void {
+    this.registrationError = true;
+    this.userService.createUser(this.user).subscribe(
+      response => {
+        // Establecer el estado de registro
+        this.authService.setUserRegisteredStatus(true);
+        // Redirigir al usuario a la página de inicio
+        this.router.navigate(['home']);
+      },
+      error => {
+        // Manejar cualquier error aquí, si es necesario
+        console.error('Error al registrar usuario:', error);
+      }
+    );
   }
 }
