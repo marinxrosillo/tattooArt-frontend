@@ -5,11 +5,12 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 /* Estilos para los títulos de sección */
 .panel-title {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
     color: #343a40;
@@ -44,18 +45,24 @@
 
 /* Estilos para los botones */
 .panel-button {
-    background-color: #007bff;
-    /* Azul */
-    color: #fff;
-    /* Texto blanco */
-    border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 5px; /* Añadir espacio entre los botones */
 }
 
-.panel-button:hover {
-    background-color: #0056b3;
-    /* Azul oscuro al pasar el mouse */
+.panel-button-edit {
+  background-color: #007bff; /* Fondo azul */
+  color: white; /* Texto blanco */
+}
+
+.panel-button-delete {
+  background-color: #dc3545; /* Fondo rojo */
+  color: white; /* Texto blanco */
+}
+
+.panel-button-create {
+  background-color: #28a745; /* Fondo verde */
+  color: white; /* Texto blanco */
 }

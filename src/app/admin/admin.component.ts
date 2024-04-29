@@ -11,7 +11,7 @@ import { UserService } from '../service/user.service';
 })
 export class AdminComponent {
 
-  //Atributos
+  // Atributos
   appointment: any = null;
   appointments: any[] = [];
   newAppointment: any = {};
@@ -32,7 +32,7 @@ export class AdminComponent {
   newUser: any = {};
   editingUser: any = null;
 
-  //Constructor
+  // Constructor
   constructor(
     private appointmentService: AppointmentsService,
     private tattooistService: TattooistService,
@@ -47,7 +47,7 @@ export class AdminComponent {
     this.getUsers();
   }
 
-  //Appointments
+  // Appointments
   getAppointments(): void {
     this.appointmentService.getAppointments()
       .subscribe(appointments => this.appointments = appointments);
@@ -65,7 +65,7 @@ export class AdminComponent {
       });
   }
 
-  //Tattooists
+  // Tattooists
   getTattooists(): void {
     this.tattooistService.getTattooists()
       .subscribe(tattooists => this.tattooists = tattooists);
@@ -83,7 +83,7 @@ export class AdminComponent {
       });
   }
 
-  //Tattoolists
+  // Tattoolists
   getTattoolists(): void {
     this.tattoolistService.getTattooLists()
       .subscribe(tattoolists => this.tattoolists = tattoolists);
@@ -101,7 +101,7 @@ export class AdminComponent {
       });
   }
 
-  //Users
+  // Users
   getUsers(): void {
     this.userService.getUsers()
       .subscribe(users => this.users = users);
@@ -119,7 +119,7 @@ export class AdminComponent {
       });
   }
 
-  //Delete
+  // Delete
   confirmDelete(entityType: string, entityId: number) {
     if (confirm(`¿Estás seguro de que deseas eliminar este ${entityType}?`)) {
       switch (entityType) {
@@ -140,5 +140,4 @@ export class AdminComponent {
       }
     }
   }
-
 }

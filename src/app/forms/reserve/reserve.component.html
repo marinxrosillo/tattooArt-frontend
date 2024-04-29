@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card-body">
+      <h5 class="card-title" style="font-weight: bold; text-align: center;">RESERVA DE CITA</h5>
+      <br>
+      <form>
+          <div class="form-group">
+              <label for="date">Fecha:</label>
+              <input type="date" id="date" name="date" [(ngModel)]="appointment.date">
+          </div>
+          <div class="form-group">
+              <label for="time">Hora:</label>
+              <input type="time" id="time" name="time" [(ngModel)]="appointment.time">
+          </div>
+          <div class="form-group">
+            <label for="tattooist">Tatuador:</label>
+            <select id="tattooist" name="tattooist" [(ngModel)]="appointment.tattooIst">
+              <option *ngFor="let tattooist of tattooists" [ngValue]="tattooist">{{ tattooist.name }} - {{ tattooist.speciality }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tattooList">Tatuaje:</label>
+            <select id="tattooList" name="tattooList" [(ngModel)]="appointment.tattooList">
+              <option *ngFor="let tattooList of tattooLists" [ngValue]="tattooList">{{ tattooList.name }} - {{ tattooList.size }} - {{ tattooList.price }}€</option>
+            </select>
+          </div>
+          <button class="btn-success" (click)="reserve()">Reservar cita</button>
+      </form>
+  </div>
+</div>

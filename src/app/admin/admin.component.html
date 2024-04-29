@@ -17,19 +17,21 @@
             <tr *ngFor="let appointment of appointments">
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.time }}</td>
-                <td>{{ appointment.status }}</td>
+                <td>{{ appointment.status ? 'Sí' : 'No' }}</td>
                 <td>{{ appointment.user }}</td>
                 <td>{{ appointment.tattoolist }}</td>
                 <td>{{ appointment.tattooist }}</td>
                 <td>
-                    <button class="panel-button" [routerLink]="'/appointments/edit/' + appointment.id">Editar</button>
-                    <button class="panel-button" (click)="confirmDelete('appointment', appointment.id)">Eliminar</button>
+                    <button class="panel-button  panel-button-edit" [routerLink]="'/appointments/edit/' + appointment.id">Editar</button>
+                    <button class="panel-button  panel-button-delete" (click)="confirmDelete('appointment', appointment.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button class="panel-button" routerLink="/appointments/create">Crear nueva cita</button>
+    <button class="panel-button panel-button-create" routerLink="/appointments/create">Crear nueva cita</button>
+
+    <br><br>
 
     <!-- Tattooists -->
     <h2 class="panel-title">Tatuadores</h2>
@@ -47,17 +49,19 @@
             <tr *ngFor="let tattooist of tattooists">
                 <td>{{ tattooist.name }}</td>
                 <td>{{ tattooist.speciality }}</td>
-                <td>{{ tattooist.availability }}</td>
+                <td>{{ tattooist.availability ? 'Sí' : 'No' }}</td>
                 <td>{{ tattooist.appointments }}</td>
                 <td>
-                    <button class="panel-button" [routerLink]="'/tattooists/edit/' + tattooist.id">Editar</button>
-                    <button class="panel-button" (click)="confirmDelete('tattooist', tattooist.id)">Eliminar</button>
+                    <button class="panel-button  panel-button-edit" [routerLink]="'/tattooists/edit/' + tattooist.id">Editar</button>
+                    <button class="panel-button  panel-button-delete" (click)="confirmDelete('tattooist', tattooist.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button class="panel-button" routerLink="/tattooists/create">Crear nuevo tatuador</button>
+    <button class="panel-button panel-button-create" routerLink="/tattooists/create">Crear nuevo tatuador</button>
+
+    <br><br>
 
     <!-- Tattoolists -->
     <h2 class="panel-title">Tatuajes</h2>
@@ -69,7 +73,6 @@
                 <th>Color</th>
                 <th>Tamaño</th>
                 <th>Precio</th>
-                <th>Archivo</th>
                 <th>Citas</th>
                 <th>Acciones</th>
             </tr>
@@ -78,20 +81,21 @@
             <tr *ngFor="let tattoolist of tattoolists">
                 <td>{{ tattoolist.name }}</td>
                 <td>{{ tattoolist.description }}</td>
-                <td>{{ tattoolist.color }}</td>
+                <td>{{ tattoolist.color ? 'Sí' : 'No' }}</td>
                 <td>{{ tattoolist.size }}</td>
-                <td>{{ tattoolist.price }}</td>
-                <td>{{ tattoolist.file }}</td>
-                <td>{{ tattooist.appointments }}</td>
+                <td>{{ tattoolist.price }} €</td>
+                <td>{{ tattoolist.appointments }}</td>
                 <td>
-                    <button class="panel-button" [routerLink]="'/tattoolists/edit/' + tattoolist.id">Editar</button>
-                    <button class="panel-button" (click)="confirmDelete('tattoolist', tattoolist.id)">Eliminar</button>
+                    <button class="panel-button  panel-button-edit" [routerLink]="'/tattoolists/edit/' + tattoolist.id">Editar</button>
+                    <button class="panel-button  panel-button-delete" (click)="confirmDelete('tattoolist', tattoolist.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button class="panel-button" routerLink="/tattoolists/create">Crear nuevo tatuaje</button>
+    <button class="panel-button panel-button-create" routerLink="/tattoolists/create">Crear nuevo tatuaje</button>
+
+    <br><br>
 
     <!-- Users -->
     <h2 class="panel-title">Usuarios</h2>
@@ -112,12 +116,12 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.appointments }}</td>
                 <td>
-                    <button class="panel-button" [routerLink]="'/users/edit/' + user.id">Editar</button>
-                    <button class="panel-button" (click)="confirmDelete('user', user.id)">Eliminar</button>
+                    <button class="panel-button  panel-button-edit" [routerLink]="'/users/edit/' + user.id">Editar</button>
+                    <button class="panel-button  panel-button-delete" (click)="confirmDelete('user', user.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <button class="panel-button" routerLink="/users/create">Crear nuevo usuario</button>
+    <button class="panel-button  panel-button-create" routerLink="/users/create">Crear nuevo usuario</button>
 </div>

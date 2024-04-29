@@ -28,6 +28,7 @@ import { TattooListFormComponent } from './forms/tattoolist-form/tattoolist-form
 import { CommonModule } from '@angular/common';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './forms/register/register.component';
+import { ReserveComponent } from './forms/reserve/reserve.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { RegisterComponent } from './forms/register/register.component';
     TattooistFormComponent,
     TattooListFormComponent,
     AboutComponent,
-    RegisterComponent
+    RegisterComponent,
+    ReserveComponent
   ],
   imports: [
     HttpClientModule,
