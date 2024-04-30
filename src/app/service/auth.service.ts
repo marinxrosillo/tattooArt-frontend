@@ -7,7 +7,6 @@ import { User } from 'src/models/User';
 })
 export class AuthService {
 
-  currentUser: User | null = null;
   isLoggedIn = false;
   currentUserEmail: string | null = null;
   private isUserRegistered: boolean = false;
@@ -34,9 +33,5 @@ export class AuthService {
 
   getUserRegisteredStatus(): boolean {
     return this.isUserRegistered;
-  }
-
-  getCurrentUser(): Observable<User | null> {
-    return of(this.currentUser);
   }
 }

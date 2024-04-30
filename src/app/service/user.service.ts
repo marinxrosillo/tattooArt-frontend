@@ -10,6 +10,8 @@ import { User } from 'src/models/User';
 export class UserService {
   private url = 'http://localhost:8082/tattooArt/api/users';
 
+  private currentUser: any;
+
   constructor(private http: HttpClient) { }
 
   // Obtener todos los usuarios
@@ -35,14 +37,5 @@ export class UserService {
   // Eliminar un usuario
   deleteUser(id: number): Observable<User> {
     return this.http.delete<User>(`${this.url}/${id}`);
-  }
-
-  // Verificar si un usuario es administrador
-  isAdminUser(userId: number): Observable<boolean> {
-    return this.http.get<User>(`${this.url}/${userId}`).pipe(
-      map((user: User) => {
-        return user.isAdmin === true; // Suponiendo que isAdmin es un booleano
-      })
-    );
   }
 }
