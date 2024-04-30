@@ -1,17 +1,12 @@
 <div class="container">
-  <h2>Tattooists</h2>
+    <h1>Tatuadores</h1>
 
-  <div class="tattooists-grid">
-      <div *ngFor="let tattooist of tattooists" class="tattooist">
-          <h3>{{ tattooist.name }}</h3>
-          Especialidad: <p>{{ tattooist.speciality }}</p>
-
-          <div class="tattoo-images">
-              <div *ngFor="let tattoo of tattooist.tattoos" class="tattoo">
-                  <img [src]="tattoo.image" alt="Tattoo">
-                  <p>{{ tattoo.description }}</p> <!-- Descripción del tatuaje -->
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="tattooists-grid">
+        <div *ngFor="let tattooist of tattooists; let i = index" class="tattooist">
+            <h3>{{ tattooist.name }}</h3>
+            <p>Especialidad: {{ tattooist.speciality }}</p>
+            <br>
+            <img [src]="'../assets/tattooists/' + (i + 1) + '.jpg'" alt="{{ tattooist.name }} Image">
+        </div>
+    </div>
 </div>

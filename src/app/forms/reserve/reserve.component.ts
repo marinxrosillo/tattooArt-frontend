@@ -6,6 +6,7 @@ import { Tattooist } from 'src/models/Tattooist';
 import { TattooList } from 'src/models/TattooList';
 import { TattooistService } from 'src/app/service/tattooist.service';
 import { TattoolistService } from 'src/app/service/tattoolist.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'reserve',
@@ -24,6 +25,7 @@ export class ReserveComponent implements OnInit {
     private appointmentsService: AppointmentsService,
     private tattooistService: TattooistService,
     private tattooListService: TattoolistService,
+    private authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -31,6 +33,12 @@ export class ReserveComponent implements OnInit {
   ngOnInit(): void {
     this.loadTattooists();
     this.loadTattooLists();
+
+    this.authService.getCurrentUser().subscribe(user => {
+      if (user) {
+        this.appointment.user = user;
+      }
+    });
   }
 
   loadTattooists(): void {
@@ -47,7 +55,12 @@ export class ReserveComponent implements OnInit {
 
   reserve(): void {
     this.appointmentsService.createAppointment(this.appointment).subscribe(
-      response => this.router.navigate(['home'])
+      response => {
+        this.router.navigate(['home']);
+      },
+      error => {
+        console.error('Error al reservar la cita:', error);
+      }
     );
   }
 }

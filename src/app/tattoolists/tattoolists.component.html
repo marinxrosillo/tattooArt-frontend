@@ -1,13 +1,13 @@
-<div>
-    <h2>Tattoo List</h2>
+<div class="container">
+    <h1>Tatuajes Disponibles</h1>
 
-    <button (click)="createTattoolist()">Add TattooList</button>
-
-    <ul>
-        <li *ngFor="let tattoolist of tattoolists">
-            {{ tattoolist.name }}
-            <button (click)="updateTattoolist(tattoolist)">Edit</button>
-            <button (click)="deleteTattoolist(tattoolist)">Delete</button>
-        </li>
-    </ul>
+    <div class="tattoolists-grid">
+        <ng-container *ngFor="let tattoolist of tattoolists; let i = index">
+            <div *ngIf="i % 3 === 0" class="tattoolist">
+                <h3>{{ tattoolist.name }}</h3>
+                Descripción: <p>{{ tattoolist.description }}</p>
+                <img [src]="'../assets/tattoos_design/' + i + '.jpg'" alt="{{ tattoolist.name }} Image">
+            </div>
+        </ng-container>
+    </div>
 </div>

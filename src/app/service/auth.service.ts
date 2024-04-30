@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { User } from 'src/models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  currentUser: User | null = null;
   isLoggedIn = false;
   currentUserEmail: string | null = null;
   private isUserRegistered: boolean = false;
@@ -12,20 +15,16 @@ export class AuthService {
   constructor() { }
 
   login(email: string, password: string) {
-    // Lógica de inicio de sesión aquí
-    // Asigna el correo electrónico del usuario actual
     this.isLoggedIn = true;
     this.currentUserEmail = email;
   }
 
   logout() {
-    // Lógica de cierre de sesión aquí
     this.isLoggedIn = false;
     this.currentUserEmail = null;
   }
 
   isAdmin(): boolean {
-    // Verifica si el usuario actual es admin
     return this.currentUserEmail === 'admin@admin.com';
   }
 
@@ -35,5 +34,9 @@ export class AuthService {
 
   getUserRegisteredStatus(): boolean {
     return this.isUserRegistered;
+  }
+
+  getCurrentUser(): Observable<User | null> {
+    return of(this.currentUser);
   }
 }

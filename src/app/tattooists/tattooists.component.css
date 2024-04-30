@@ -1,10 +1,11 @@
 .container {
-    max-width: 800px;
+    max-width: 90%;
     margin: 50px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 h2 {
@@ -30,15 +31,11 @@ h2 {
     margin-top: 0;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
+.tattooist img {
+    width: 600px; /* Establece un ancho fijo para la imagen */
+    height: 600px; /* Establece una altura fija para la imagen */
+    object-fit: cover; /* Escala la imagen manteniendo su relación de aspecto y cubriendo todo el contenedor */
+    display: block; /* Asegura que la imagen sea un elemento de bloque */
+    border-radius: 8px; /* Opcional: aplica un borde redondeado a la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
 }
