@@ -5,11 +5,15 @@
     <form>
       <div class="form-group">
         <label for="date">Fecha:</label>
-        <input type="date" id="date" name="date" [(ngModel)]="appointment.date">
+        <input type="date" id="date" name="date" [(ngModel)]="appointment.date" [min]="minDate" [max]="maxDate">
       </div>
+
       <div class="form-group">
         <label for="time">Hora:</label>
-        <input type="time" id="time" name="time" [(ngModel)]="appointment.time">
+        <input type="time" id="time" name="time" [(ngModel)]="appointment.time" list="allowedTimes">
+        <datalist id="allowedTimes">
+          <option *ngFor="let time of allowedTimes" [value]="time">{{ time }}</option>
+        </datalist>
       </div>
       <div class="form-group">
         <label for="tattooist">Tatuador:</label>

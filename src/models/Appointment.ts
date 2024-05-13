@@ -7,16 +7,16 @@ export class Appointment {
   date: Date | null;
   time: string;
   status: boolean;
-  user: User | null;
-  tattooList: TattooList | null;
-  tattooIst: Tattooist | null;
+  user: string | null;
+  tattooList: string | null;
+  tattooIst: string | null;
 
   constructor() {
     this.id = 0;
     this.date = null;
     this.time = '';
     this.status = false;
-    this.user = null;
+    this.user = '';
     this.tattooList = null;
     this.tattooIst = null;
   }

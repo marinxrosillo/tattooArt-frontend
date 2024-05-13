@@ -54,13 +54,10 @@ export class RegisterComponent {
     this.registrationError = true;
     this.userService.createUser(this.user).subscribe(
       response => {
-        // Establecer el estado de registro
         this.authService.setUserRegisteredStatus(true);
-        // Redirigir al usuario a la página de inicio
-        this.router.navigate(['home']);
+        this.router.navigate(['']);
       },
       error => {
-        // Manejar cualquier error aquí, si es necesario
         console.error('Error al registrar usuario:', error);
       }
     );

@@ -12,7 +12,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UserFormComponent implements OnInit {
 
-  title: string = "USER INFORMATION";
+  title: string = "INFORMACIÓN DE USUARIO";
 
   user: User = new User();
 

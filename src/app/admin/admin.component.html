@@ -17,8 +17,8 @@
             <tr *ngFor="let appointment of appointments">
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.time }}</td>
-                <td>{{ appointment.status ? 'Sí' : 'No' }}</td>
-                <td>{{ appointment.user }}</td>
+                <td>{{ appointment.status ? 'Realizada' : 'Pendiente' }}</td>
+                <td>{{ appointment.user.name }}</td>
                 <td>{{ appointment.tattoolist }}</td>
                 <td>{{ appointment.tattooist }}</td>
                 <td>
@@ -28,8 +28,6 @@
             </tr>
         </tbody>
     </table>
-    <br>
-    <button class="panel-button panel-button-create" routerLink="/appointments/create">Crear nueva cita</button>
 
     <br><br>
 
@@ -41,7 +39,6 @@
                 <th>Nombre</th>
                 <th>Especialidad</th>
                 <th>Disponibilidad</th>
-                <th>Citas</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -50,7 +47,6 @@
                 <td>{{ tattooist.name }}</td>
                 <td>{{ tattooist.speciality }}</td>
                 <td>{{ tattooist.availability ? 'Sí' : 'No' }}</td>
-                <td>{{ tattooist.appointments }}</td>
                 <td>
                     <button class="panel-button  panel-button-edit" [routerLink]="'/tattooists/edit/' + tattooist.id">Editar</button>
                     <button class="panel-button  panel-button-delete" (click)="confirmDelete('tattooist', tattooist.id)">Eliminar</button>
@@ -73,7 +69,6 @@
                 <th>Color</th>
                 <th>Tamaño</th>
                 <th>Precio</th>
-                <th>Citas</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -84,7 +79,6 @@
                 <td>{{ tattoolist.color ? 'Sí' : 'No' }}</td>
                 <td>{{ tattoolist.size }}</td>
                 <td>{{ tattoolist.price }} €</td>
-                <td>{{ tattoolist.appointments }}</td>
                 <td>
                     <button class="panel-button  panel-button-edit" [routerLink]="'/tattoolists/edit/' + tattoolist.id">Editar</button>
                     <button class="panel-button  panel-button-delete" (click)="confirmDelete('tattoolist', tattoolist.id)">Eliminar</button>
@@ -105,7 +99,6 @@
                 <th>Nombre</th>
                 <th>Nombre de Usuario</th>
                 <th>Email</th>
-                <th>Citas</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -114,7 +107,6 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.appointments }}</td>
                 <td>
                     <button class="panel-button  panel-button-edit" [routerLink]="'/users/edit/' + user.id">Editar</button>
                     <button class="panel-button  panel-button-delete" (click)="confirmDelete('user', user.id)">Eliminar</button>

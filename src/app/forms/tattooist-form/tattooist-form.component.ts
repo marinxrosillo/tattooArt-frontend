@@ -14,7 +14,7 @@ import { TattooistService } from 'src/app/service/tattooist.service';
 })
 export class TattooistFormComponent implements OnInit {
 
-  title: string = "TATTOOIST INFORMATION";
+  title: string = "INFORMACIÓN DE TATUADOR";
 
   tattooist: Tattooist = new Tattooist();
 

@@ -8,7 +8,7 @@ import { User } from 'src/models/User';
 export class AuthService {
 
   isLoggedIn = false;
-  currentUserEmail: string | null = null;
+  currentUserEmail: string | null = '';
   private isUserRegistered: boolean = false;
 
   constructor() { }
@@ -33,5 +33,9 @@ export class AuthService {
 
   getUserRegisteredStatus(): boolean {
     return this.isUserRegistered;
+  }
+
+  getLoggedEmail(): string | null {
+    return this.currentUserEmail;
   }
 }
