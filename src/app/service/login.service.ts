@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { map } from 'rxjs';
+import { map, throwError } from 'rxjs';
 import { Credentials } from 'src/models/Credentials';
 import { Router } from '@angular/router';
 
@@ -16,6 +16,10 @@ export class LoginService {
   ) {}
 
   login(creds: Credentials) {
+    if (!creds.email || !creds.password) {
+      return throwError('Los campos de usuario y contraseña son obligatorios');
+    }
+
     return this.http.post("http://localhost:8082/tattooArt/api/auth/login", creds, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) => {
@@ -30,7 +34,7 @@ export class LoginService {
       this.isLoggedIn = true;
 
       return body;
-    }))
+    }));
   }
 
   loginIn() {

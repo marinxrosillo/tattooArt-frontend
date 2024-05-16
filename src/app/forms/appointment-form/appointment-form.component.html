@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-body">
-    <h5 class="card-title" style="font-weight: bold; text-align: center;">INFORMACIÓN DE CITA</h5>
+    <h3 class="card-title" style="font-weight: bold; text-align: center;">INFORMACIÓN DE CITA</h3>
     <br>
     <form>
       <div class="form-group">
@@ -14,7 +14,7 @@
       <div class="form-group">
         <label for="status">Estado:</label>
         <input type="checkbox" id="status" name="status" [(ngModel)]="appointment.status">
-    </div>
+      </div>
       <div class="form-group">
         <label for="tattooist">Tatuador:</label>
         <select id="tattooist" name="tattooist" [(ngModel)]="appointment.tattooIst">
@@ -29,7 +29,12 @@
             tattooList.size }} - {{ tattooList.price }}€</option>
         </select>
       </div>
-      <button class="btn-success" (click)="update()">Actualizar</button>
+
+      <div class="button-container">
+        <button class="btn-success" (click)="update()">Actualizar</button>
+
+        <button class="btn-success" routerLink="/admin">Volver</button>
+      </div>
     </form>
   </div>
 </div>

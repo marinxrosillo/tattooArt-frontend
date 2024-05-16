@@ -52,10 +52,16 @@ select {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .btn-success:hover {
   background-color: #333;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Estilo para los detalles en negro */

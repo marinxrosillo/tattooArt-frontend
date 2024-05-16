@@ -10,7 +10,7 @@ import { TattoolistService } from 'src/app/service/tattoolist.service';
 })
 export class TattooListFormComponent implements OnInit {
 
-  title: string = "INFORMACIÓN DE TATUAJE";
+  title: string = "INFORMACIÓN DEL TATUAJE";
 
   tattoolist: TattooList = new TattooList();
 

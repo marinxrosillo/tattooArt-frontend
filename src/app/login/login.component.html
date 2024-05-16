@@ -13,12 +13,8 @@
 </head>
 
 <body class="bg-dark d-flex justify-content-center align-items-center vh-100">
-  <div *ngIf="loginError" class="alert alert-danger mt-3" role="alert">
-    Las credenciales son incorrectas. Por favor, inténtalo de nuevo.
-  </div>
   <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 35rem">
-  <form #form="ngForm" (ngSubmit)="login(form)">
-
+    <form #form="ngForm" (ngSubmit)="login(form)">
       <div class="d-flex justify-content-center">
         <img src="/assets/logo2.png" style="height: 10rem" />
       </div>
@@ -27,17 +23,21 @@
         <div class="input-group-text bg-dark">
           <img src="/assets/username-icon.svg" style="height: 1.5rem" />
         </div>
-        <input class="form-control bg-light" type="text" id="email" name="email" placeholder="Correo Electrónico*" [(ngModel)]="creds.email" required />
+        <input class="form-control bg-light" type="text" id="email" name="email" placeholder="Correo Electrónico*"
+          [(ngModel)]="creds.email" required />
       </div>
       <div class="input-group mt-1">
         <div class="input-group-text bg-dark">
           <img src="/assets/password-icon.svg" style="height: 1.5rem" />
         </div>
-        <input class="form-control bg-light" type="password" id="password" name="password" placeholder="Contraseña*" [(ngModel)]="creds.password" required />
+        <input class="form-control bg-light" type="password" id="password" name="password" placeholder="Contraseña*"
+          [(ngModel)]="creds.password" required />
       </div>
       <!-- Mensaje de error general para campos obligatorios -->
       <div *ngIf="form.submitted && form.invalid" class="text-danger mt-2">Por favor, rellene todos los campos
         obligatorios</div>
+      <!-- Mensaje de error para credenciales incorrectas
+      <div *ngIf="loginError" class="text-danger mt-2">Credenciales incorrectas</div> -->
       <button class="btn btn-dark text-white w-100 mt-4 fw-semibold shadow-sm" type="submit">
         Iniciar Sesión
       </button>
@@ -45,7 +45,6 @@
         <div>¿No tienes una cuenta?</div>
         <a routerLink="/register" class="text-decoration-none text-dark fw-semibold">Regístrate</a>
       </div>
-
-  </form>
-</div>
+    </form>
+  </div>
 </body>

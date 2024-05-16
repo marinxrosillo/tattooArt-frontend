@@ -12,7 +12,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginComponent {
 
-  loginError = false;
+  loginError: boolean = false;
 
   creds: Credentials = {
     email: '',

@@ -14,7 +14,7 @@ import { TattoolistService } from 'src/app/service/tattoolist.service';
 })
 export class AppointmentFormComponent implements OnInit {
 
-  title: string = "INFORMACIÓN DE CITA";
+  title: string = "INFORMACIÓN DE LA CITA";
 
   appointment: Appointment = new Appointment();
   tattooists: Tattooist[] = [];

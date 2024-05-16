@@ -24,8 +24,8 @@ export class ReserveComponent implements OnInit {
   tattooLists: TattooList[] = [];
 
   allowedTimes: string[] = ['09:00', '11:00', '13:00', '15:00', '17:00', '19:00'];
-  minDate: string = this.getMinDate();
-  maxDate: string = this.getMaxDate();
+  minDate: Date = new Date(); // Fecha mínima, por defecto es la fecha actual
+  invalidDate: boolean = false;
 
   constructor(
     private appointmentsService: AppointmentsService,
@@ -53,26 +53,21 @@ export class ReserveComponent implements OnInit {
     );
   }
 
-  isWeekday(date: Date): boolean {
-    const day = date.getDay();
-    return day >= 1 && day <= 5;
-  }
-
-  getMinDate(): string {
-    const today = new Date();
-    const nextMonday = new Date(today);
-    nextMonday.setDate(today.getDate() + ((1 + 7 - today.getDay()) % 7));
-    return nextMonday.toISOString().split('T')[0];
-  }
-
-  getMaxDate(): string {
-    const today = new Date();
-    const friday = new Date(today);
-    friday.setDate(today.getDate() + ((5 + 7 - today.getDay()) % 7));
-    return friday.toISOString().split('T')[0];
+  validateDate(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const dateString = target.value;
+    if (dateString) {
+      const selectedDate = new Date(dateString);
+      const dayOfWeek = selectedDate.getDay();
+      this.invalidDate = (dayOfWeek === 0 || dayOfWeek === 6);
+    }
   }
 
   reserve(): void {
+    if (this.invalidDate) {
+      return;
+    }
+
     const date = this.appointment.date;
     const time = this.appointment.time;
     const tattooist = this.appointment.tattooIst;
