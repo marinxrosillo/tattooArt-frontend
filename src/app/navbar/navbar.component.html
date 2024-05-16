@@ -10,7 +10,7 @@
         <!-- Verifica si el usuario está autenticado y es admin -->
         <li *ngIf="authService.isLoggedIn && authService.isAdmin()"><a routerLink="/admin">Panel de Control</a></li>
     </ul>
-    <div class="logout-btn">
-        <a (click)="logout()">Cerrar sesión</a>
+    <div class="logo">
+      <img src="../../assets/cerrar_sesion.png" alt="Logo TattooArt" (click)="logout()" style="margin-left: 113px;">
     </div>
 </nav>
