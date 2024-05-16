@@ -50,7 +50,12 @@ export class AdminComponent {
   // Appointments
   getAppointments(): void {
     this.appointmentService.getAppointments()
-      .subscribe(appointments => this.appointments = appointments);
+      .subscribe(appointments => {
+        // Ordenar citas por fecha
+        this.appointments = appointments
+          .filter(appointment => appointment.date !== null)
+          .sort((a, b) => new Date(a.date!).getTime() - new Date(b.date!).getTime());
+      });
   }
 
   getAppointmentById(id: number): void {

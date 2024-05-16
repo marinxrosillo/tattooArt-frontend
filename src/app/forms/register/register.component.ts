@@ -51,7 +51,7 @@ export class RegisterComponent {
   }
 
   register(): void {
-    this.registrationError = true;
+    this.registrationError = false;
     this.userService.createUser(this.user).subscribe(
       response => {
         this.authService.setUserRegisteredStatus(true);
@@ -59,6 +59,7 @@ export class RegisterComponent {
       },
       error => {
         console.error('Error al registrar usuario:', error);
+        this.registrationError = true;
       }
     );
   }

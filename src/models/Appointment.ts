@@ -8,8 +8,8 @@ export class Appointment {
   time: string;
   status: boolean;
   user: string | null;
-  tattooList: string | null;
-  tattooIst: string | null;
+  tattooList: TattooList | null;
+  tattooIst: Tattooist | null;
 
   constructor() {
     this.id = 0;

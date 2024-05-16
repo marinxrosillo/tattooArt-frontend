@@ -22,7 +22,8 @@ export class LoginComponent {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+  ) { }
 
   login(form: NgForm) {
     this.authService.login(this.creds.email, this.creds.password);
@@ -39,7 +40,6 @@ export class LoginComponent {
     }, error => {
       console.error('Error al iniciar sesión:', error);
       this.loginError = true;
-      console.log(this.loginError);
     });
   }
 }

@@ -1,34 +1,34 @@
 <div class="container">
   <div class="card-body">
-      <h5 class="card-title" style="font-weight: bold; text-align: center;">{{ title }}</h5>
-      <br>
-      <form>
-          <div class="form-group">
-              <label for="name">Nombre: </label>
-              <input type="text" name="name" [(ngModel)]="tattoolist.name">
-          </div>
-          <div class="form-group">
-              <label for="description">Descripción: </label>
-              <input type="text" name="description" [(ngModel)]="tattoolist.description">
-          </div>
-          <div class="form-group">
-              <label for="color">Color: </label>
-              <input type="text" name="color" [(ngModel)]="tattoolist.color">
-          </div>
-          <div class="form-group">
-            <label for="size">Tamaño: </label>
-            <input type="text" name="size" [(ngModel)]="tattoolist.size">
-          </div>
-          <div class="form-group">
-            <label for="price">Precio: </label>
-            <input type="text" name="price" [(ngModel)]="tattoolist.price">
-          </div>
+    <h5 class="card-title" style="font-weight: bold; text-align: center;">{{ title }}</h5>
+    <br>
+    <form>
+      <div class="form-group">
+        <label for="name">Nombre: </label>
+        <input type="text" name="name" [(ngModel)]="tattoolist.name">
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción: </label>
+        <input type="text" name="description" [(ngModel)]="tattoolist.description">
+      </div>
+      <div class="form-group">
+        <label for="color">Color: </label>
+        <input type="checkbox" id="color" name="color" [(ngModel)]="tattoolist.color">
+      </div>
+      <div class="form-group">
+        <label for="size">Tamaño: </label>
+        <input type="text" name="size" [(ngModel)]="tattoolist.size">
+      </div>
+      <div class="form-group">
+        <label for="price">Precio: </label>
+        <input type="text" name="price" [(ngModel)]="tattoolist.price">
+      </div>
 
-          <button class="btn-success" (click)="create()" *ngIf="!tattoolist.id; else elseBlock">Crear</button>
+      <button class="btn-success" (click)="create()" *ngIf="!tattoolist.id; else elseBlock">Crear</button>
 
-          <ng-template #elseBlock>
-              <button class="btn-success" (click)="update()">Actualizar</button>
-          </ng-template>
-      </form>
+      <ng-template #elseBlock>
+        <button class="btn-success" (click)="update()">Actualizar</button>
+      </ng-template>
+    </form>
   </div>
 </div>

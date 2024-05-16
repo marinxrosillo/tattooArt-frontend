@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-  isLoggedIn = false; // Variable para controlar el estado de autenticación
+  isLoggedIn = false;
 
   constructor(
     private http: HttpClient,
@@ -27,7 +27,6 @@ export class LoginService {
 
       localStorage.setItem('token', token);
 
-      // Actualiza la variable isLoggedIn a true después de iniciar sesión
       this.isLoggedIn = true;
 
       return body;
@@ -40,11 +39,10 @@ export class LoginService {
 
   logout() {
     const confirmLogout = window.confirm('¿Estás seguro de que deseas cerrar sesión?');
-  
+
     if (confirmLogout) {
       localStorage.removeItem('token');
-  
-      // Actualiza la variable isLoggedIn a false después de cerrar sesión
+
       this.isLoggedIn = false;
 
       this.router.navigate(['']);
