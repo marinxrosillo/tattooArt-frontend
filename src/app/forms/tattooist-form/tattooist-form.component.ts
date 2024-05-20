@@ -6,6 +6,7 @@ import { User } from 'src/models/User';
 import { UserService } from 'src/app/service/user.service';
 import { Tattooist } from 'src/models/Tattooist';
 import { TattooistService } from 'src/app/service/tattooist.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'tattooist-form',
@@ -41,13 +42,21 @@ export class TattooistFormComponent implements OnInit {
     );
   }
 
-  create(): void {
+  create(form: NgForm): void {
+    if(form.valid === false) {
+      return;
+    }
+
     this.tattooistService.createTattooist(this.tattooist).subscribe(
       response => this.router.navigate(['admin'])
     );
   }
 
-  update(): void {
+  update(form: NgForm): void {
+    if(form.valid === false) {
+      return;
+    }
+
     this.tattooistService.updateTattooist(this.tattooist).subscribe(
       response => this.router.navigate(['admin'])
     );

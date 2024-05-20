@@ -84,3 +84,7 @@ select {
 .form-group:last-child:before {
   display: none;
 }
+
+.text-danger {
+  color: red;
+}

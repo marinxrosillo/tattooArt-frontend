@@ -19,8 +19,8 @@
                 <td>{{ appointment.time }}</td>
                 <td>{{ appointment.status ? 'Realizada' : 'Pendiente' }}</td>
                 <td>{{ appointment.user.name }}</td>
-                <td>{{ appointment.tattoolist }}</td>
-                <td>{{ appointment.tattooist }}</td>
+                <td>{{ appointment.tattooList.name }}</td>
+                <td>{{ appointment.tattooIst.name   }}</td>
                 <td>
                     <button class="panel-button  panel-button-edit" [routerLink]="'/appointments/edit/' + appointment.id">Editar</button>
                     <button class="panel-button  panel-button-delete" (click)="confirmDelete('appointment', appointment.id)">Eliminar</button>
@@ -28,6 +28,8 @@
             </tr>
         </tbody>
     </table>
+    <br>
+    <button class="panel-button panel-button-create" routerLink="/appointments/create">Crear nueva cita</button>
 
     <br><br>
 

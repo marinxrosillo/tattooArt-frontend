@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentsService } from 'src/app/service/appointment.service';
 import { User } from 'src/models/User';
 import { UserService } from 'src/app/service/user.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'user-form',
@@ -39,13 +40,21 @@ export class UserFormComponent implements OnInit {
     );
   }
 
-  create(): void {
+  create(form: NgForm): void {
+    if(form.valid === false) {
+      return;
+    }
+
     this.userService.createUser(this.user).subscribe(
       response => this.router.navigate(['admin'])
     );
   }
 
-  update(): void {
+  update(form: NgForm): void {
+    if(form.valid === false) {
+      return;
+    }
+
     this.userService.updateUser(this.user).subscribe(
       response => this.router.navigate(['admin'])
     );

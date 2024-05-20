@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'tattooists', component: TattooistsComponent, canActivate: [AuthGuard] },
   { path: 'tattoolists', component: TattoolistsComponent, canActivate: [AuthGuard] },
   { path: 'appointments/edit/:id', component: AppointmentFormComponent, canActivate: [AuthGuard] },
+  { path: 'appointments/create', component: AppointmentFormComponent, canActivate: [AuthGuard] },
   { path: 'users/create', component: UserFormComponent, canActivate: [AuthGuard] },
   { path: 'users/edit/:id', component: UserFormComponent, canActivate: [AuthGuard] },
   { path: 'tattooists/create', component: TattooistFormComponent, canActivate: [AuthGuard] },
