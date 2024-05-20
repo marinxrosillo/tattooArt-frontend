@@ -145,4 +145,18 @@ export class AdminComponent {
       }
     }
   }
+
+  appointmentsBlockVisible: boolean = true;
+
+  toggleBlock(blockId: string): void {
+    const blocks = document.querySelectorAll('.panel-block');
+
+    blocks.forEach(block => {
+      if (block.id === blockId) {
+        block.classList.toggle('active');
+      } else {
+        block.classList.remove('active');
+      }
+    });
+  }
 }

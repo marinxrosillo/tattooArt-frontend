@@ -35,10 +35,7 @@ export class LoginComponent {
       } else {
         this.router.navigate(['home']);
       }
-
-      this.loginError = false;
     }, error => {
-      console.error('Error al iniciar sesión:', error);
       this.loginError = true;
     });
   }

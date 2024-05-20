@@ -1,20 +1,33 @@
-/* Estilos para el contenedor del panel */
-.panel-container {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.container {
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para los títulos de sección */
 .panel-title {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
     color: #343a40;
-    /* Color de texto oscuro */
+}
+
+.panel-title2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #343a40;
 }
 
 /* Estilos para las tablas */
@@ -28,19 +41,16 @@
 .panel-table td {
     padding: 12px;
     border: 1px solid #dee2e6;
-    /* Borde gris claro */
 }
 
 /* Estilos para el encabezado de la tabla */
 .panel-table thead {
     background-color: #f2f2f2;
-    /* Fondo gris claro */
 }
 
 /* Estilos para las filas alternas de la tabla */
 .panel-table tbody tr:nth-child(even) {
     background-color: #fafafa;
-    /* Fondo blanco */
 }
 
 /* Estilos para los botones */
@@ -49,20 +59,32 @@
   padding: 8px 16px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin: 5px; /* Añadir espacio entre los botones */
+  margin: 5px;
 }
 
 .panel-button-edit {
-  background-color: #007bff; /* Fondo azul */
-  color: white; /* Texto blanco */
+  background-color: #007bff;
+  color: white;
 }
 
 .panel-button-delete {
-  background-color: #dc3545; /* Fondo rojo */
-  color: white; /* Texto blanco */
+  background-color: #dc3545;
+  color: white;
 }
 
 .panel-button-create {
-  background-color: #28a745; /* Fondo verde */
-  color: white; /* Texto blanco */
+  background-color: #28a745;
+  color: white;
+}
+
+.panel-block {
+  display: none;
+}
+
+.panel-block.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }

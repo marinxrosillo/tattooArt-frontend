@@ -85,8 +85,8 @@ export class ReserveComponent implements OnInit {
     const emailData = {
       to: this.authService.getLoggedEmail(),
       subject: 'RECORDATORIO DE CITA { TATTOOART }',
-      body: 'Buenas tardes, ' + this.appointment.user + '.\n\n' +
-        'Le recordamos que tiene una cita programada con el tatuador ' + this.appointment.tattooIst + ' el día ' + this.appointment.date + ' a las ' + this.appointment.time + '.\n\n' +
+      body: 'Buenas tardes' + '.\n\n' +
+        'Le recordamos que tiene una cita programada con el tatuador ' + this.appointment.tattooIst?.name + ' el día ' + this.appointment.date + ' a las ' + this.appointment.time + '.\n\n' +
         '¡Gracias por confiar en TattooArt!'
     };
 

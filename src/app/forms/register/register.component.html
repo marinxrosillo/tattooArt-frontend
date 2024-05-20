@@ -48,15 +48,23 @@
           <img src="/assets/password-icon.svg" style="height: 1.5rem" />
         </div>
         <input class="form-control bg-light" type="password" id="password" name="password" placeholder="Contraseña*"
-          [(ngModel)]="user.password" required />
+          [(ngModel)]="user.password" minlength="8" required />
       </div>
-      <!-- Mensaje de error general para campos obligatorios -->
-      <div *ngIf="form.submitted && form.invalid" class="text-danger mt-2">Por favor, rellene todos los campos
-        obligatorios</div>
+      <!-- Mensaje de error específico para la longitud mínima de la contraseña -->
+      <div
+        *ngIf="form.submitted && form.controls['password']?.errors?.['minlength'] && !form.controls['password']?.errors?.['required']"
+        class="text-danger mt-2">
+        La contraseña debe tener al menos 8 caracteres.
+      </div>
+      <!-- Mensaje de error general para campos obligatorios y otros errores -->
+      <div *ngIf="form.submitted && form.invalid && !form.controls['password']?.errors?.['minlength']"
+        class="text-danger mt-2">
+        Por favor, rellene todos los campos obligatorios.
+      </div>
       <div *ngIf="registrationError" class="text-danger">
         Nombre de Usuario o Correo Electrónico existentes
       </div>
-      <button class="btn btn-dark text-white w-100 mt-4 fw-semibold shadow-sm" type="submit">
+      <button class="btn btn-dark text-white w-100 mt-4 fw-semibold shadow-sm" type="submit" [disabled]="form.invalid">
         Registrarse
       </button>
       <div class="d-flex gap-1 justify-content-center mt-1">
