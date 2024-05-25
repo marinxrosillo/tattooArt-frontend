@@ -15,7 +15,6 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./appointment-form.component.css']
 })
 export class AppointmentFormComponent implements OnInit {
-
   title: string = "INFORMACIÓN DE LA CITA";
 
   appointment: Appointment = new Appointment();
@@ -79,10 +78,7 @@ export class AppointmentFormComponent implements OnInit {
           this.appointmentService.getById(id).subscribe(
             appointment => {
               this.appointment = appointment;
-              // Se asegura de que los datos cargados se reflejan en el formulario
-              this.loadTattooists();
-              this.loadTattooLists();
-              this.loadUsers();
+              console.log('Loaded appointment:', this.appointment);
             }
           );
         }
@@ -104,5 +100,17 @@ export class AppointmentFormComponent implements OnInit {
     this.appointmentService.updateAppointment(this.appointment).subscribe(
       response => this.router.navigate(['admin'])
     );
+  }
+
+  compareTattooist(t1: Tattooist, t2: Tattooist): boolean {
+    return t1 && t2 ? t1.id === t2.id : t1 === t2;
+  }
+
+  compareTattooList(t1: TattooList, t2: TattooList): boolean {
+    return t1 && t2 ? t1.id === t2.id : t1 === t2;
+  }
+
+  compareUser(u1: User, u2: User): boolean {
+    return u1 && u2 ? u1.id === u2.id : u1 === u2;
   }
 }

@@ -19,19 +19,19 @@
       </div>
       <div class="form-group">
         <label for="tattooist">Tatuador*:</label>
-        <select id="tattooist" name="tattooist" [(ngModel)]="appointment.tattooIst" required>
+        <select id="tattooist" name="tattooist" [(ngModel)]="appointment.tattooIst" [compareWith]="compareTattooist" required>
           <option *ngFor="let tattooist of tattooists" [ngValue]="tattooist">{{ tattooist.name }} - {{ tattooist.speciality }}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="tattooList">Tatuaje*:</label>
-        <select id="tattooList" name="tattooList" [(ngModel)]="appointment.tattooList" required>
+        <select id="tattooList" name="tattooList" [(ngModel)]="appointment.tattooList" [compareWith]="compareTattooList" required>
           <option *ngFor="let tattooList of tattooLists" [ngValue]="tattooList">{{ tattooList.name }} - {{ tattooList.size }} - {{ tattooList.price }}€</option>
         </select>
       </div>
       <div class="form-group">
         <label for="user">Usuario*:</label>
-        <select id="user" name="user" [(ngModel)]="appointment.user" required>
+        <select id="user" name="user" [(ngModel)]="appointment.user" [compareWith]="compareUser" required>
           <option *ngFor="let user of users" [ngValue]="user">{{ user.name }} - {{ user.email }}</option>
         </select>
       </div>
